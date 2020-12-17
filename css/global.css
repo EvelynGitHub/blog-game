@@ -10,14 +10,18 @@
     --color-box-footer: #FAFAFC;
     --color-primary: #ff5f77;
     --color-primary-hover: #ff7e8c;
-    --color-error: #ff143b;
+    --color-error: #ff143b; */
     --font-base: 400 1.1rem Roboto, sans-serif;
-    --font-family: Roboto, sans-serif; */
+    --font-family: Roboto, sans-serif;
 
     --color-primary: #7827e6;
     --color-second: #8d39ec;
     --color-light-primary: #aa4ff6;
     --color-light-secund:#eabdfc;
+
+     --color-input-background: #FFF;
+     --color-input-border:#eabdfc;
+     --color-input-border-focus: 0px 0px 0px 0.1rem rgba(128, 189, 255, 0.67);
 }
 
 * {
