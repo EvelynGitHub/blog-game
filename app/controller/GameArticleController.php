@@ -12,7 +12,8 @@ class GameArticleController
     {
         $game = $this->convertType($data);
 
-        var_dump($game);
+        $valid = $this->validate($game);
+        var_dump($valid);
         // return json_encode(["name" => "create"]);
     }
 
@@ -49,5 +50,22 @@ class GameArticleController
             (isset($data['description']) ? $data['description'] : null),
             (isset($data['videoId']) ? $data['videoId'] : null)
         );
+    }
+
+    private function validate(GameArticle $game, $update = false)
+    {
+        if ($update && $game->id <= 0)
+            return ["result" => false, "message" => "id inválido"];
+
+        if (strlen($game->title) < 5 || strlen($game->title) > 100)
+            return ["result" => false, "message" => "titulo inválido"];
+
+        if (strlen($game->description) < 15 || strlen($game->description) > 250)
+            return ["result" => false, "message" => "Descrição inválido"];
+
+        if ($game->videoId == "" || strlen($game->videoId) > 20)
+            return ["result" => false, "message" => "Video inválido"];
+
+        return ["result" => true, "message" => "Artigo valido"];
     }
 }
