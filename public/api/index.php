@@ -14,7 +14,30 @@ require_once("../../vendor/autoload.php");
 
 $controller = null; //Controller que será chamado
 $param      = null; // Parametros que podem vir na url (Exemplo: /game/:id)
-$data       = null; // Dado que podem vir da requisição (Exemplo: formulários)
+$data       = getDataRequest(); // Dado que podem vir da requisição (Exemplo: formulários)
 $method     = $_SERVER["REQUEST_METHOD"]; //GET, POST, PUT, PATCH e DELETE
 
-echo $method;
+
+
+echo json_encode([
+    "method" => $method,
+    "data" => $data
+]);
+
+
+function getDataRequest(): array
+{
+    $array = null;
+
+    //parse_str tranforma a string em array associativo
+
+    // pega os dados na pela url
+    //parse_str($_SERVER['QUERY_STRING'], $array);
+    // ou
+    // pega os dados por formulário
+    parse_str(file_get_contents("php://input"), $array);
+
+    return $array;
+
+    //https://www.php.net/manual/pt_BR/wrappers.php.php
+}
