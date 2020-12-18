@@ -16,11 +16,12 @@ $controller = null; //Controller que será chamado
 $param      = null; // Parametros que podem vir na url (Exemplo: /game/:id)
 $data       = getDataRequest(); // Dado que podem vir da requisição (Exemplo: formulários)
 $method     = $_SERVER["REQUEST_METHOD"]; //GET, POST, PUT, PATCH e DELETE
-
+$uri        = $_SERVER["REQUEST_URI"];
 
 
 echo json_encode([
     "method" => $method,
+    "uri"   => $uri,
     "data" => $data
 ]);
 
