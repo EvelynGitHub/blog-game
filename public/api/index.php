@@ -12,11 +12,13 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 require_once("../../vendor/autoload.php");
 
+use App\Controller\GameArticleController;
+
 $controller = null; //Controller que será chamado
 $param      = null; // Parametros que podem vir na url (Exemplo: /game/:id)
 $data       = getDataRequest(); // Dado que podem vir da requisição (Exemplo: formulários)
 $method     = $_SERVER["REQUEST_METHOD"]; //GET, POST, PUT, PATCH e DELETE
-$urlBase    = "localhost/blog-game/api";
+$urlBase    = "localhost/blog-game/api/";
 $uri        = getUri($urlBase);
 
 $paramsUri = explode("/", $uri);
@@ -64,4 +66,47 @@ function getUri($urlBase): string
     $uri = str_replace($urlBase, "", $fullURL);
 
     return $uri;
+}
+// FIM
+
+
+// Inicio
+
+$gameArticle = new GameArticleController();
+switch ($method) {
+    case 'GET':
+        if ($controller != null && $param == null) {
+            echo $gameArticle->readAll();
+        } else if ($controller != null && $param != null) {
+            echo $gameArticle->readByID($param);
+        } else {
+            echo json_encode(['message' => "invalido"]);
+        }
+        break;
+    case 'POST':
+        if ($controller == "game" && $param == null) {
+            echo $gameArticle->create($data);
+        } else {
+            echo json_encode(['message' => "invalido"]);
+        }
+        break;
+    case 'PUT':
+    case 'PATCH':
+        if ($controller != null && $param != null) {
+            echo $gameArticle->update($param, $data);
+        } else {
+            echo json_encode(['message' => "invalido"]);
+        }
+        break;
+    case 'DELETE':
+        if ($controller != null && $param != null) {
+            echo $gameArticle->delete($param);
+        } else {
+            echo json_encode(['message' => "invalido"]);
+        }
+        break;
+
+    default:
+        echo json_encode(['message' => "Requisição invalido"]);
+        break;
 }
