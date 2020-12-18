@@ -1,0 +1,12 @@
+{
+    "name": "evelyn/blog-game",
+    "description": "Um simples projeto de blog com nicho em games",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evelyn",
+            "email": "evelynbrandao15@gmail.com"
+        }
+    ],
+    "require": {}
+}
