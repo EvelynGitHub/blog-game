@@ -16,13 +16,23 @@ $controller = null; //Controller que será chamado
 $param      = null; // Parametros que podem vir na url (Exemplo: /game/:id)
 $data       = getDataRequest(); // Dado que podem vir da requisição (Exemplo: formulários)
 $method     = $_SERVER["REQUEST_METHOD"]; //GET, POST, PUT, PATCH e DELETE
-$urlBase    = "localhost/blog-game/";
+$urlBase    = "localhost/blog-game/api";
 $uri        = getUri($urlBase);
 
+$paramsUri = explode("/", $uri);
+$paramsUri = array_values(array_filter($paramsUri)); //retiro valores em branco e pego apenas os values
+
+if (isset($paramsUri[0])) $controller = $paramsUri[0];
+if (isset($paramsUri[1])) $param = $paramsUri[1];
+
+// var_dump($paramsUri);
+
 echo json_encode([
-    "method" => $method,
-    "uri"   => $uri,
     "url"   => $urlBase,
+    "uri"   => $uri,
+    "method" => $method,
+    "controller" => $controller,
+    "param" => $param,
     "data" => $data
 ]);
 
