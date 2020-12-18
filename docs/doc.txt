@@ -1,0 +1,11 @@
+=============Campos===============
+id = identificador do post
+titulo = nome do jogo ou matéria
+descricao = Breve descricao jo assunto
+videoId = Trailer do jogo
+
+==============Regras==============
+id > 0 
+titulo > 3 && 100
+descricao >= 10 && <=250
+videoId != ""
