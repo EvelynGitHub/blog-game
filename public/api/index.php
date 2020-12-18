@@ -29,6 +29,7 @@ if (isset($paramsUri[1])) $param = $paramsUri[1];
 
 // var_dump($paramsUri);
 
+/*
 echo json_encode([
     "url"   => $urlBase,
     "uri"   => $uri,
@@ -37,7 +38,7 @@ echo json_encode([
     "param" => $param,
     "data" => $data
 ]);
-
+*/
 
 function getDataRequest(): array
 {
