@@ -5,5 +5,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^(.*)$ index.php [NC,L]
 
-Options -Indexs
+Options -Indexes
 
