@@ -16,12 +16,13 @@ $controller = null; //Controller que será chamado
 $param      = null; // Parametros que podem vir na url (Exemplo: /game/:id)
 $data       = getDataRequest(); // Dado que podem vir da requisição (Exemplo: formulários)
 $method     = $_SERVER["REQUEST_METHOD"]; //GET, POST, PUT, PATCH e DELETE
-$uri        = $_SERVER["REQUEST_URI"];
-
+$urlBase    = "localhost/blog-game/";
+$uri        = getUri($urlBase);
 
 echo json_encode([
     "method" => $method,
     "uri"   => $uri,
+    "url"   => $urlBase,
     "data" => $data
 ]);
 
@@ -41,4 +42,16 @@ function getDataRequest(): array
     return $array;
 
     //https://www.php.net/manual/pt_BR/wrappers.php.php
+}
+
+function getUri($urlBase): string
+{
+    $fullURL = "{$_SERVER["SERVER_NAME"]}{$_SERVER["REQUEST_URI"]}";
+
+    $http = ["http://", "https://"];
+    $urlBase = str_replace($http, "", $urlBase);
+
+    $uri = str_replace($urlBase, "", $fullURL);
+
+    return $uri;
 }
