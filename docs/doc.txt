@@ -9,3 +9,10 @@ id > 0
 titulo > 3 && 100
 descricao >= 10 && <=250
 videoId != ""
+
+==============ENDPOITs=============
+GET     = /game         >> Retorna todos artigos
+GET     = /game/:id     >> Retorna artigo pelo ID
+POST    = /game         >> Cria novo artigo
+PUT     = /game/:id     >> Edita um artigo
+DELETE  = /game/:id     >> Deleta um artigo
