@@ -10,13 +10,14 @@ function create(params) {
         method: "POST",
         url: "api/game/",
         data: params,
-        before() { },
+        before() { document.getElementById("btnSave").disable = true },
         success(e) {
-            console.log(e)
+            alert(e.result)
         },
-        error() { },
+        error(e) { console.log("EROOOO:", e.result) },
         complete() {
             console.log("Complete Create")
+            document.getElementById("btnSave").disable = false
         }
 
     })
