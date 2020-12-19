@@ -25,6 +25,21 @@ class GameArticleModel
         return "OK";
     }
 
+    public function delete($id)
+    {
+        for ($i = 0; $i < count($this->listGameArticle); $i++) {
+            if ($this->listGameArticle[$i]->id == $id) {
+                unset($this->listGameArticle[$i]);
+            }
+        }
+
+        $this->listGameArticle = array_values(array_filter($this->listGameArticle));
+        $this->save();
+
+        return "Deletado";
+    }
+
+
     public function readAll()
     {
         $temp = [];

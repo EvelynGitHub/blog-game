@@ -42,7 +42,8 @@ class GameArticleController
 
     public function delete(int $id = 0)
     {
-        return json_encode(["name" => "delete"]);
+        $list = $this->gameArticleModel->delete($id);
+        return json_encode(["article" => $list]);
     }
 
     public function readById(int $id = 0)
