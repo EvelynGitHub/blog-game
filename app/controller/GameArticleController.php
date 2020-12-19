@@ -25,7 +25,7 @@ class GameArticleController
             return json_encode(["result" => $valid["message"]]);
         }
 
-        return $this->gameArticleModel->create($game);
+        return json_encode(["result" => $this->gameArticleModel->create($game)]);
     }
 
     //PUT - altera artigo
