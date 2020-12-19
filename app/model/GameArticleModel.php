@@ -27,31 +27,32 @@ class GameArticleModel
 
     public function update(GameArticle $game)
     {
+        $res = "Not found";
         for ($i = 0; $i < count($this->listGameArticle); $i++) {
             if ($this->listGameArticle[$i]->id == $game->id) {
-
                 $this->listGameArticle[$i] = $game;
-                // $this->listGameArticle[$i]->description = $game->description;
-                // $this->listGameArticle[$i]->videoId = $game->videoId;
+                $res = "update ok";
             }
         }
 
         $this->save();
-        return "update ok";
+        return $res;
     }
 
     public function delete($id)
     {
+        $res = "Not found";
         for ($i = 0; $i < count($this->listGameArticle); $i++) {
             if ($this->listGameArticle[$i]->id == $id) {
                 unset($this->listGameArticle[$i]);
+                $res = "delete ok";
             }
         }
 
         $this->listGameArticle = array_values(array_filter($this->listGameArticle));
         $this->save();
 
-        return "Deletado";
+        return $res;
     }
 
 
