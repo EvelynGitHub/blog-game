@@ -25,7 +25,7 @@ class GameArticleController
             return json_encode(["result" => $valid["message"]]);
         }
 
-        $this->gameArticleModel->create($game);
+        return $this->gameArticleModel->create($game);
     }
 
     //PUT - altera artigo
@@ -53,7 +53,8 @@ class GameArticleController
 
     public function readAll()
     {
-        return json_encode(["name" => "readAll"]);
+        $list = $this->gameArticleModel->readAll();
+        return json_encode(["list" => $list]);
     }
 
     private function convertType($data)
