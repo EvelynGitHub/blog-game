@@ -77,13 +77,13 @@ class GameArticleController
         if ($update && $game->id <= 0)
             return ["result" => false, "message" => "id inválido"];
 
-        if (strlen($game->title) < 5 || strlen($game->title) > 100)
+        if (strlen($game->title) < 3 || strlen($game->title) > 100)
             return ["result" => false, "message" => "titulo inválido"];
 
         if (strlen($game->description) < 15 || strlen($game->description) > 250)
             return ["result" => false, "message" => "Descrição inválido"];
 
-        if ($game->videoId == "" || strlen($game->videoId) > 20)
+        if ($game->videoId == "" || strlen($game->videoId) > 300)
             return ["result" => false, "message" => "Video inválido"];
 
         return ["result" => true, "message" => "Artigo valido"];
