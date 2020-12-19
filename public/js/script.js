@@ -6,6 +6,20 @@ window.onload = function () {
 
 function create(params) {
     console.log("Create")
+    ajax({
+        method: "POST",
+        url: "api/game/",
+        data: params,
+        before() { },
+        success(e) {
+            console.log(e)
+        },
+        error() { },
+        complete() {
+            console.log("Complete Create")
+        }
+
+    })
 }
 
 function readAll() {
@@ -75,4 +89,49 @@ function ajax(params) {
     });
 
     console.log("Entrou no Ajax")
+}
+
+
+//=====================================
+document.getElementById("newPost").addEventListener("click", function (e) {
+    e.preventDefault()
+    openModal()
+}, false);
+
+document.getElementById("btnClose").addEventListener("click", function (e) {
+    e.preventDefault();
+    closeModal()
+}, false);
+
+document.getElementById("btnSave").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    obj = {
+        id: document.getElementById("id").value,
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        videoId: document.getElementById("videoId").value,
+    }
+
+    if (obj.id == "") {
+        create(obj)
+    } else {
+        update(obj)
+    }
+
+}, false);
+
+function openModal() {
+    modal = document.querySelector(".modal-container")
+    modal.classList.remove("hidden")
+}
+function closeModal() {
+    modal = document.querySelector(".modal-container")
+    modal.classList.add("hidden")
+    clearModal()
+}
+
+function clearModal() {
+    document.querySelector(".modal-container .modal form").reset()
+    document.querySelector(".modal-container .modal .modal-header").innerHTML = "Faça uma Sujestão de Post"
 }
