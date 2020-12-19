@@ -40,6 +40,22 @@ class GameArticleModel
         return ($temp);
     }
 
+    public function readById($id)
+    {
+
+        foreach ($this->listGameArticle as $l) {
+            if ($l->id == $id) {
+                return [
+                    "id" => $l->id,
+                    "title" => $l->title,
+                    "description" => $l->description,
+                    "videoId" => $l->videoId,
+                ];
+            }
+        }
+        return [];
+    }
+
     private function save()
     {
         $temp = [];

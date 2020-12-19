@@ -47,7 +47,8 @@ class GameArticleController
 
     public function readById($id = 0)
     {
-        return json_encode(["name" => "readById"]);
+        $list = $this->gameArticleModel->readById($id);
+        return json_encode(["article" => $list]);
     }
 
 
