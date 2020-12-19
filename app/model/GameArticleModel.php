@@ -25,6 +25,21 @@ class GameArticleModel
         return "OK";
     }
 
+    public function update(GameArticle $game)
+    {
+        for ($i = 0; $i < count($this->listGameArticle); $i++) {
+            if ($this->listGameArticle[$i]->id == $game->id) {
+
+                $this->listGameArticle[$i] = $game;
+                // $this->listGameArticle[$i]->description = $game->description;
+                // $this->listGameArticle[$i]->videoId = $game->videoId;
+            }
+        }
+
+        $this->save();
+        return "update ok";
+    }
+
     public function delete($id)
     {
         for ($i = 0; $i < count($this->listGameArticle); $i++) {

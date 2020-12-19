@@ -92,11 +92,10 @@ switch ($method) {
         }
         break;
     case 'PUT':
-    case 'PATCH':
         if ($controller != null && $param != null) {
             echo $gameArticle->update($param, $data);
         } else {
-            echo json_encode(['message' => "invalido"]);
+            echo json_encode(['message' => "invalido PUT"]);
         }
         break;
     case 'DELETE':

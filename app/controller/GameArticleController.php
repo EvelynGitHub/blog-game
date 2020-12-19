@@ -38,6 +38,9 @@ class GameArticleController
         if (!$valid['result']) {
             return json_encode(["result" => $valid["message"]]);
         }
+
+        $list = $this->gameArticleModel->update($game);
+        return json_encode(["article" => $list]);
     }
 
     public function delete(int $id = 0)
