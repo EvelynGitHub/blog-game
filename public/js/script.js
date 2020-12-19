@@ -31,9 +31,9 @@ function readAll() {
                             </div>
                             <h4>${e.list[i].title}</h4>
                             <div class="info-post">                                                    
-                                <button type="submit" class="btn" onclick="update(${e.list[i].id})">Editar</button>
+                                <button type="submit" class="btn btn-warning" onclick="update(${e.list[i].id})">Editar</button>
                                 <button type="submit" class="btn" onclick="readById(${e.list[i].id})">Visualiza</button>
-                                <button type="submit" class="btn" onclick="deleteArticle(${e.list[i].id})">Deletar</button>
+                                <button type="submit" class="btn btn-danger" onclick="deleteArticle(${e.list[i].id})">Deletar</button>
                             </div >
                         </div > `
                 posts.innerHTML += html;
