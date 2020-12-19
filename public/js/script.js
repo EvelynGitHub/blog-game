@@ -13,6 +13,8 @@ function create(params) {
         before() { document.getElementById("btnSave").disable = true },
         success(e) {
             alert(e.result)
+
+            readAll()
         },
         error(e) { console.log("EROOOO:", e.result) },
         complete() {
@@ -95,6 +97,8 @@ function update(params) {
         before() { document.getElementById("btnSave").disable = true },
         success(e) {
             alert(e.result)
+
+            readAll()
             console.log(e)
         },
         error(e) { console.log("EROOOO:", e.result) },
@@ -126,6 +130,8 @@ function deleteArticle(id) {
         }
 
     })
+
+    readAll()
 }
 
 function ajax(params) {
