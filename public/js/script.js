@@ -107,6 +107,25 @@ function update(params) {
 }
 function deleteArticle(id) {
     console.log("delete")
+
+    if (!confirm("Deseja realmente excluir este port?"))
+        return
+
+    ajax({
+        method: "DELETE",
+        url: "api/game/" + id,
+        data: {},
+        before() { },
+        success(e) {
+            alert(e.result)
+            console.log(e)
+        },
+        error(e) { console.log("EROOOO:", e.result) },
+        complete() {
+            console.log("Complete DELETE")
+        }
+
+    })
 }
 
 function ajax(params) {
