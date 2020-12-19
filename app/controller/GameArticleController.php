@@ -29,7 +29,7 @@ class GameArticleController
     }
 
     //PUT - altera artigo
-    public function update($id = 0, $data = null)
+    public function update(int $id = 0, $data = null)
     {
         $game = $this->convertType($data);
         $game->id = $id;
@@ -40,12 +40,12 @@ class GameArticleController
         }
     }
 
-    public function delete($id = 0)
+    public function delete(int $id = 0)
     {
         return json_encode(["name" => "delete"]);
     }
 
-    public function readById($id = 0)
+    public function readById(int $id = 0)
     {
         $list = $this->gameArticleModel->readById($id);
         return json_encode(["article" => $list]);
