@@ -3,9 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\GameArticle;
+use App\Model\GameArticleModel;
 
 class GameArticleController
 {
+    private $gameArticleModel;
+
+    public function __construct()
+    {
+        $this->gameArticleModel = new GameArticleModel;
+    }
 
     //POST - cria artigo
     public function create($data = null)
@@ -13,8 +20,12 @@ class GameArticleController
         $game = $this->convertType($data);
 
         $valid = $this->validate($game);
-        var_dump($valid);
-        // return json_encode(["name" => "create"]);
+
+        if (!$valid['result']) {
+            return json_encode(["result" => $valid["message"]]);
+        }
+
+        $this->gameArticleModel->create($game);
     }
 
     //PUT - altera artigo
@@ -22,8 +33,11 @@ class GameArticleController
     {
         $game = $this->convertType($data);
         $game->id = $id;
+        $valid = $this->validate($game, true);
 
-        return json_encode(["name" => "update"]);
+        if (!$valid['result']) {
+            return json_encode(["result" => $valid["message"]]);
+        }
     }
 
     public function delete($id = 0)
