@@ -17,6 +17,8 @@ class GameArticleModel
 
     public function create(GameArticle $game)
     {
+        $game->id = $this->getLastId();
+
         $this->listGameArticle[] = $game;
         $this->save();
 
@@ -80,5 +82,17 @@ class GameArticleModel
                 $l->videoId
             );
         }
+    }
+
+    private function getLastId()
+    {
+        $lastId = 0;
+
+        foreach ($this->listGameArticle as $l) {
+            if ($l->id > $lastId)
+                $lastId = $l->id;
+        }
+
+        return ($lastId + 1);
     }
 }
