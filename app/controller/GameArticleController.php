@@ -40,19 +40,19 @@ class GameArticleController
         }
 
         $list = $this->gameArticleModel->update($game);
-        return json_encode(["article" => $list]);
+        return json_encode(["result" => $list]);
     }
 
     public function delete(int $id = 0)
     {
         $list = $this->gameArticleModel->delete($id);
-        return json_encode(["article" => $list]);
+        return json_encode(["result" => $list]);
     }
 
     public function readById(int $id = 0)
     {
         $list = $this->gameArticleModel->readById($id);
-        return json_encode(["article" => $list]);
+        return json_encode(["result" => $list]);
     }
 
 
