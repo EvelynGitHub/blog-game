@@ -39,8 +39,6 @@ function readAll() {
             posts = document.querySelector(".box-posts")
             posts.innerHTML = ""
 
-            console.log("Success read:", e.list)
-
             for (let i = 0; i < e.list.length; i++) {
                 html = `<div class="item-post">
                             <div class="img-post">
