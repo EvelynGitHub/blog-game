@@ -95,7 +95,7 @@ function update(params) {
         before() { document.getElementById("btnSave").disable = true },
         success(e) {
             alert(e.result)
-
+            closeModal()
             readAll()
             console.log(e)
         },
@@ -153,7 +153,7 @@ function ajax(params) {
 //=================EVENTS====================
 document.getElementById("newPost").addEventListener("click", function (e) {
     e.preventDefault()
-    CKEDITOR.instances['description'].setData("");
+    clearModal()
     openModal()
 }, false);
 
@@ -182,10 +182,13 @@ document.getElementById("btnSave").addEventListener("click", function (e) {
     if (obj.id == "") {
         console.log("Sem ID chama create()")
         create(obj)
+        clearModal()
     } else {
         console.log("Com ID chama update()")
         update(obj)
     }
+
+
 
 }, false);
 
@@ -203,6 +206,7 @@ function clearModal() {
     document.querySelector(".modal-container .modal form").reset()
     document.querySelector(".modal-container .modal .modal-header").innerHTML = "Faça uma Sujestão de Post"
     document.getElementById("id").value = ""
+    CKEDITOR.instances['description'].setData("");
 }
 
 function openUpdate(id) {
