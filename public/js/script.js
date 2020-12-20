@@ -49,7 +49,7 @@ function readAll() {
                             <h4>${e.list[i].title}</h4>
                             <div class="info-post">                                                    
                                 <button type="submit" class="btn btn-warning" onclick="openUpdate(${e.list[i].id})">Editar</button>
-                                <button type="submit" class="btn" onclick="readById(${e.list[i].id})">Visualiza</button>
+                                <button type="submit" class="btn" onclick="openView(${e.list[i].id})">Visualiza</button>
                                 <button type="submit" class="btn btn-danger" onclick="deleteArticle(${e.list[i].id})">Deletar</button>
                             </div >
                         </div > `
@@ -162,6 +162,10 @@ document.getElementById("btnClose").addEventListener("click", function (e) {
     e.preventDefault();
     closeModal()
 }, false);
+document.getElementById("btnCloseView").addEventListener("click", function (e) {
+    e.preventDefault();
+    closeModal(".modal-view")
+}, false);
 
 document.getElementById("btnSave").addEventListener("click", function (e) {
     e.preventDefault();
@@ -183,12 +187,12 @@ document.getElementById("btnSave").addEventListener("click", function (e) {
 
 }, false);
 
-function openModal() {
-    modal = document.querySelector(".modal-container")
+function openModal(modal = ".modal-container") {
+    modal = document.querySelector(modal)
     modal.classList.remove("hidden")
 }
-function closeModal() {
-    modal = document.querySelector(".modal-container")
+function closeModal(modal = ".modal-container") {
+    modal = document.querySelector(modal)
     modal.classList.add("hidden")
     clearModal()
 }
@@ -212,4 +216,17 @@ function openUpdate(id) {
     document.getElementById("videoId").value = obj.videoId
 
     console.log("Entrou openUpdate")
+}
+
+function openView(id) {
+    console.log("OPEN VIEW")
+    openModal(".modal-view")
+
+    post = readById(id).result
+
+    document.querySelector(".modal-view .modal .modal-header").innerHTML = post.title
+    document.querySelector(".modal-view .modal .modal-body img").src = post.videoId
+
+    document.querySelector(".modal-view .modal .modal-body article").insertAdjacentHTML("beforeend", post.description)
+
 }
