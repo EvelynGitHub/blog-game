@@ -230,9 +230,9 @@ function openView(id) {
     document.querySelector(".modal-view .modal .modal-header").innerHTML = post.title
     document.querySelector(".modal-view .modal .modal-body img").src = post.videoId
 
-    let des = document.querySelector(".modal-view .modal .modal-body article")
+    let des = document.querySelector(".modal-view .modal .modal-body article #article")
 
-    des.lastChild.remove()
+    des.innerHTML = ""
     des.insertAdjacentHTML("beforeend", post.description)
 
 }
