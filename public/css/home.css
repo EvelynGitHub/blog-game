@@ -232,10 +232,13 @@
 
 .modal{
     width: 90%;
+    max-height: 60%;
     border-radius: 5px;
     margin-top: 1rem;
     background-color: white;
     color: #333;
+
+    position: relative;
 }
 
 .modal-header,
@@ -245,19 +248,30 @@
     padding: 1rem;
     border-radius: 5px;
     background-color: #DDD;
+    width: 100%;
 }
 .modal-footer {
     text-align: end;
+    position: absolute;
+    bottom: 0;
 }
 .modal-footer button{
     width: 30%;
     min-width: 6rem;
 }
+
+.modal form{
+    height: 80%;
+    padding-bottom: 1rem;
+    overflow-y: scroll;
+}
 .modal form .modal-body{
     padding: 1rem;
 
+    position: relative;
     display: flex;
     flex-direction: column;
+
 }
 
 .modal form .modal-body input{
@@ -289,9 +303,17 @@
 
 }
 .modal-view .modal{
+    overflow: hidden;
+    position: relative;
+    max-height: 90vh;
+}
+
+.modal-view .modal-body{
     overflow-y: scroll;
     overflow-x: hidden;
-    max-height: 90vh;
+    max-height: 80vh;
+    margin-bottom: 2rem;
+    padding-bottom: 3rem;
 }
 .modal-view .modal-info{
     display: flex;
@@ -301,6 +323,10 @@
     height: 30vh;
     padding-bottom: 2rem;
     border-bottom: #999 solid 1px;
+}
+.modal-view .modal .modal-footer {
+    position: absolute;
+    bottom: 0;
 }
 .modal-view .modal-info img{
     height: 100%;

@@ -153,6 +153,7 @@ function ajax(params) {
 //=================EVENTS====================
 document.getElementById("newPost").addEventListener("click", function (e) {
     e.preventDefault()
+    CKEDITOR.instances['description'].setData("");
     openModal()
 }, false);
 
