@@ -80,7 +80,7 @@ class GameArticleController
         if (strlen($game->title) < 3 || strlen($game->title) > 100)
             return ["result" => false, "message" => "titulo inválido"];
 
-        if (strlen($game->description) < 15 || strlen($game->description) > 250)
+        if (strlen($game->description) < 15 /*|| strlen($game->description) > 250*/)
             return ["result" => false, "message" => "Descrição inválido"];
 
         if ($game->videoId == "" || strlen($game->videoId) > 300)

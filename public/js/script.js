@@ -167,11 +167,14 @@ document.getElementById("btnCloseView").addEventListener("click", function (e) {
 
 document.getElementById("btnSave").addEventListener("click", function (e) {
     e.preventDefault();
+    console.log("SALVO")
+
+    let article = CKEDITOR.instances['description'].getData();
 
     obj = {
         id: document.getElementById("id").value,
         title: document.getElementById("title").value,
-        description: document.getElementById("description").value,
+        description: article, //document.getElementById("description").value,
         videoId: document.getElementById("videoId").value,
     }
 
@@ -210,10 +213,12 @@ function openUpdate(id) {
 
     document.getElementById("id").value = obj.id
     document.getElementById("title").value = obj.title
-    document.getElementById("description").value = obj.description
+
     document.getElementById("videoId").value = obj.videoId
 
+    CKEDITOR.instances['description'].setData(obj.description);
     console.log("Entrou openUpdate")
+
 }
 
 function openView(id) {
