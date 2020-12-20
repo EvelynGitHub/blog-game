@@ -227,6 +227,9 @@ function openView(id) {
     document.querySelector(".modal-view .modal .modal-header").innerHTML = post.title
     document.querySelector(".modal-view .modal .modal-body img").src = post.videoId
 
-    document.querySelector(".modal-view .modal .modal-body article").insertAdjacentHTML("beforeend", post.description)
+    let des = document.querySelector(".modal-view .modal .modal-body article")
+
+    des.lastChild.remove()
+    des.insertAdjacentHTML("beforeend", post.description)
 
 }
